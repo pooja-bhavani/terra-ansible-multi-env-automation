@@ -3,7 +3,7 @@
 ### Provision and configure different-sized AWS environments
 (dev / staging / prod) from a **single codebase** using Terraform workspaces, reusable modules, remote state with locking, and Ansible for configuration management — with secrets handled through AWS Secrets Manager and **zero static credentials**.
 
-<img width="944" height="528" alt="architecture-flow" src="https://github.com/user-attachments/assets/78def342-09b8-417e-b7ba-d1ad75320a06" />
+<img width="1456" height="884" alt="image" src="https://github.com/user-attachments/assets/ef88f5b2-72d1-4fad-96aa-c85406571fcf" />
 
 ---
 
@@ -16,6 +16,9 @@ One Terraform codebase provisions a complete environment whose size is decided b
 | `dev`       | 2   | 1  | 1        |
 | `stag`      | 3   | 1  | 1        |
 | `prod`      | 4   | 2  | 2        |
+
+<img width="1456" height="884" alt="image" src="https://github.com/user-attachments/assets/dc3277ae-96b5-436f-9074-5b28bcc316f8" />
+
 
 Then **Ansible** connects to every server and configures them in parallel (installs packages, sets up nginx, deploys a landing page) — pulling the SSH key from **AWS Secrets Manager** at runtime.
 
@@ -43,27 +46,8 @@ Manually managing multiple environments leads to:
 
 ##  Architecture
 
-```
-                    ┌──────────────────────────┐
-                    │   terraform workspace     │  dev → 2/1/1
-                    │   (locals counts map)     │  prod → 4/2/2
-                    └────────────┬─────────────┘
-                                 │
-        ┌────────────────────────┼────────────────────────┐
-        ▼                        ▼                         ▼
-  modules/ec2              modules/s3               modules/dynamodb
-   (servers)               (buckets)                  (tables)
-        │
-        │ public key on instance
-        ▼
-  AWS Secrets Manager  ◄── Terraform stores the SSH private key
-        │
-        │ generate_inventory.sh fetches it (AWS CLI + IAM)
-        ▼
-   Ansible (roles)  ──►  configures ALL servers at once
+<img width="944" height="528" alt="architecture-flow" src="https://github.com/user-attachments/assets/d08c1fe8-405b-4ec3-849d-39a5c61db263" />
 
-  Remote State:  S3 bucket (encrypted)  +  DynamoDB table (locking)
-```
 
 ---
 
