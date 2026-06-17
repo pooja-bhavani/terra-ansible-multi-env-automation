@@ -2,6 +2,7 @@
 # Local .terraform directories (downloaded providers/modules)
 **/.terraform/*
 .terraform/
+.terraform.lock.hcl
 
 # State files (live in S3 — never commit; may contain secrets)
 *.tfstate
