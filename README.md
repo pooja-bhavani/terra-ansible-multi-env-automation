@@ -203,7 +203,3 @@ cd backends && terraform destroy
 
 ---
 
-## Live Deployment
-
-<!-- Open an EC2 public IP in your browser, screenshot it, drag it into a GitHub edit box to get a URL, then paste below -->
-<img width="1000" alt="Live landing page served via Ansible" src="PASTE_SCREENSHOT_URL_HERE" />
