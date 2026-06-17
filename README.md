@@ -3,6 +3,8 @@
 ### Provision and configure different-sized AWS environments
 (dev / staging / prod) from a **single codebase** using Terraform workspaces, reusable modules, remote state with locking, and Ansible for configuration management — with secrets handled through AWS Secrets Manager and **zero static credentials**.
 
+---
+
 <img width="1456" height="884" alt="image" src="https://github.com/user-attachments/assets/ef88f5b2-72d1-4fad-96aa-c85406571fcf" />
 
 ---
