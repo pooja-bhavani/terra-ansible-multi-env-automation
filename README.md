@@ -1,8 +1,9 @@
 # End-to-End Infrastructure Automation at Scale: Provisioning & Configuration using Terraform, Ansible and AWS
 
-### Provision and configure **different-sized AWS environments** (dev / staging / prod) from a **single codebase** using Terraform workspaces, reusable modules, remote state with locking, and Ansible for configuration management — with secrets handled through AWS Secrets Manager and **zero static credentials**.
+### Provision and configure different-sized AWS environments
+(dev / staging / prod) from a **single codebase** using Terraform workspaces, reusable modules, remote state with locking, and Ansible for configuration management — with secrets handled through AWS Secrets Manager and **zero static credentials**.
 
-<img width="1462" height="804" alt="image" src="https://github.com/user-attachments/assets/13bc65e6-3320-4c66-ba6e-33dcef19ceae" />
+<img width="944" height="528" alt="architecture-flow" src="https://github.com/user-attachments/assets/78def342-09b8-417e-b7ba-d1ad75320a06" />
 
 ---
 
