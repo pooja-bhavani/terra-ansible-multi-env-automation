@@ -1,0 +1,60 @@
+# ===== Terraform =====
+# Local .terraform directories (downloaded providers/modules)
+**/.terraform/*
+.terraform/
+
+# State files (live in S3 — never commit; may contain secrets)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Saved plans (can contain sensitive values)
+*.tfplan
+*tfplan*
+
+# Variable files that may hold secrets
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# Override files (local-only overrides)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI config
+.terraformrc
+terraform.rc
+
+# ===== Ansible =====
+# SSH private key fetched from Secrets Manager — NEVER commit
+*.pem
+key.pem
+ansible-for-devops/key.pem
+
+# Generated inventory (built from terraform outputs)
+inventory.ini
+ansible-for-devops/inventory.ini
+
+# Ansible Vault password files
+.vault_pass
+*.vault_pass
+
+# Ansible retry files
+*.retry
+
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
