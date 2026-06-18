@@ -1,3 +1,6 @@
+---
+# roles/webserver/tasks/main.yml
+
 - name: Update apt cache and upgrade all packages
   apt:
     update_cache: yes
@@ -14,6 +17,14 @@
     state: started
     enabled: true
   notify: Restart nginx
+
+- name: Ensure web root directory exists
+  file:
+    path: /var/www/html
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "0755"
 
 - name: Deploy project landing page
   template:
