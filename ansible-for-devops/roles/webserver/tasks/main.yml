@@ -1,3 +1,20 @@
+- name: Update apt cache and upgrade all packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Install common packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+
+- name: Ensure nginx is running and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: true
+  notify: Restart nginx
+
 - name: Deploy project landing page
   template:
     src: index.html.j2
