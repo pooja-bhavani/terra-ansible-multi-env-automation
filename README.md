@@ -109,6 +109,11 @@ jq --version
 ```
 - An AWS account with credentials configured (`aws configure`) — these provide the **IAM identity** both Terraform and Ansible use.
 
+### Clone the Repo
+```
+git clone https://github.com/pooja-bhavani/terra-ansible-multi-env-automation.git
+cd terra-ansible-multi-env-automation
+```
 ---
 
 ## How to Run (Step by Step)
