@@ -63,12 +63,13 @@ resource "aws_secretsmanager_secret_version" "ssh_key" {
 
 # --- Module calls: counts come from the workspace config map above ---
 module "ec2" {
-  source         = "./modules/ec2"
-  instance_count = local.current.ec2
-  instance_type  = var.instance_type
-  ami_id         = data.aws_ami.ubuntu.id
-  key_name       = aws_key_pair.this.key_name
-  env            = terraform.workspace
+  source               = "./modules/ec2"
+  instance_count       = local.current.ec2
+  instance_type        = var.instance_type
+  ami_id               = data.aws_ami.ubuntu.id
+  key_name             = aws_key_pair.this.key_name
+  iam_instance_profile = aws_iam_instance_profile.ec2.name
+  env                  = terraform.workspace
 }
 
 module "s3" {
@@ -81,4 +82,17 @@ module "dynamodb" {
   source      = "./modules/dynamodb"
   table_count = local.current.ddb
   env         = terraform.workspace
+}
+
+The only change is this line in the module "ec2" block:
+  iam_instance_profile = aws_iam_instance_profile.ec2.name
+(aws_iam_instance_profile.ec2 is the resource from your iam.tf.)
+
+Don't forget the variable declaration
+
+This works only if modules/ec2/variables.tf has the variable declared:
+variable "iam_instance_profile" {
+  description = "IAM instance profile name attached to the EC2 instances"
+  type        = string
+  default     = null
 }
