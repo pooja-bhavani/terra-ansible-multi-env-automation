@@ -23,6 +23,12 @@ variable "env" {
   type        = string
 }
 
+variable "iam_instance_profile" {
+  description = "IAM instance profile name attached to the EC2 instances"
+  type        = string
+  default     = null
+}
+
 variable "common_tags" {
   description = "Common tags applied to all resources"
   type        = map(string)
