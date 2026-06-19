@@ -1,5 +1,3 @@
-# This module creates EC2 instances in the default VPC with a security group allowing SSH and HTTP access.
-
 # --- Default VPC ---
 resource "aws_default_vpc" "default" {}
 
@@ -41,6 +39,7 @@ resource "aws_instance" "this" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
   key_name                    = var.key_name
+  iam_instance_profile        = var.iam_instance_profile
   vpc_security_group_ids      = [aws_security_group.this.id]
   associate_public_ip_address = true
 
